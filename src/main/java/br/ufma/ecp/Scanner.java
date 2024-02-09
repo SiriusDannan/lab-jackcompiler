@@ -129,66 +129,66 @@ private char peekNext () {
                 }
                 else {
                     advance();
-                    return new Token (TokenType.SLASH,"/");
+                    return new Token (TokenType.SLASH,"/",line);
                 }
             case 0:
-                return new Token (EOF,"EOF");
+                return new Token (EOF,"EOF",line);
                 case '-':
                 advance();
-                return new Token (TokenType.MINUS,"-"); 
+                return new Token (TokenType.MINUS,"-",line); 
             case '*':
                 advance();
-                return new Token (TokenType.ASTERISK,"*"); 
+                return new Token (TokenType.ASTERISK,"*",line); 
             case '.':
                 advance();
-                return new Token (TokenType.DOT,"."); 
+                return new Token (TokenType.DOT,".",line); 
             case '&':
                 advance();
-                return new Token (TokenType.AND,"&"); 
+                return new Token (TokenType.AND,"&",line); 
             case '|':
                 advance();
-                return new Token (TokenType.OR,"|"); 
+                return new Token (TokenType.OR,"|",line); 
             case '~':
                 advance();
-                return new Token (TokenType.NOT,"~"); 
+                return new Token (TokenType.NOT,"~",line); 
 
             case '>':
                 advance();
-                return new Token (TokenType.GT,">"); 
+                return new Token (TokenType.GT,">",line); 
             case '<':
                 advance();
-                return new Token (TokenType.LT,"<"); 
+                return new Token (TokenType.LT,"<",line); 
             case '=':
                 advance();
-                return new Token (TokenType.EQ,"="); 
+                return new Token (TokenType.EQ,"=",line); 
         
             case '(':
                 advance();
-                return new Token (TokenType.LPAREN,"("); 
+                return new Token (TokenType.LPAREN,"(",line); 
             case ')':
                 advance();
-                return new Token (TokenType.RPAREN,")"); 
+                return new Token (TokenType.RPAREN,")",line); 
             case '{':
                 advance();
-                return new Token (TokenType.LBRACE,"{"); 
+                return new Token (TokenType.LBRACE,"{",line); 
             case '}':
                 advance();
-                return new Token (TokenType.RBRACE,"}"); 
+                return new Token (TokenType.RBRACE,"}",line); 
             case '[':
                 advance();
-                return new Token (TokenType.LBRACKET,"["); 
+                return new Token (TokenType.LBRACKET,"[",line); 
             case ']':
                 advance();
-                return new Token (TokenType.RBRACKET,"]"); 
+                return new Token (TokenType.RBRACKET,"]",line); 
             case ';':
                 advance();
-                return new Token (TokenType.SEMICOLON,";"); 
+                return new Token (TokenType.SEMICOLON,";",line); 
             case ',':
                 advance();
-                return new Token (TokenType.COMMA,",");
+                return new Token (TokenType.COMMA,",",line);
             default:
                 advance();
-                return new Token(ILLEGAL, Character.toString(ch));
+                return new Token(ILLEGAL, Character.toString(ch),line);
         }
     }
 
@@ -198,7 +198,7 @@ private char peekNext () {
         String id = new String(input, start, current-start, StandardCharsets.UTF_8)  ;
         TokenType type = keywords.get(id);
         if (type == null) type = IDENT;
-        return new Token(type, id);
+        return new Token(type, id,line);
     }
 
     private Token number() {
@@ -207,7 +207,7 @@ private char peekNext () {
         }
         
             String num = new String(input, start, current-start, StandardCharsets.UTF_8)  ;
-            return new Token(NUMBER, num);
+            return new Token(NUMBER, num,line);
     }
 
     private Token string () {
@@ -217,7 +217,7 @@ private char peekNext () {
             advance();
         }
         String s = new String(input, start, current-start, StandardCharsets.UTF_8);
-        Token token = new Token (TokenType.STRING,s);
+        Token token = new Token (TokenType.STRING,s),line;
         advance();
         return token;
  }
