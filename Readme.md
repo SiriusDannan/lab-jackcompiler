@@ -1,2 +1,4 @@
-mvn package
-java -cp target/jackcompiler-1.0-SNAPSHOT.jar br.ufma.ecp.App
+Trabalho de Compiladores
+Aluno :Edmundo Henrique Brabosa Luz
+
+1.Analisador Léxico
