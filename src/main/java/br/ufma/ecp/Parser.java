@@ -60,5 +60,4 @@ public class Parser {
     public String VMOutput() {
         return "";
     }
-
 }
