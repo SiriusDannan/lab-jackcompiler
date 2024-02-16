@@ -17,24 +17,20 @@ public enum TokenType {
     NULL,THIS,LET,DO,IF,ELSE, RETURN,
 
 
-     EOF
+     EOF,
 
      // symbols
     LPAREN,RPAREN,
     LBRACE, RBRACE,
     LBRACKET,RBRACKET,
 
-    COMMA, SEMICOLON, DOT,
+    COMMA, DOT,
   
-    PLUS,  MINUS,ASTERISK, SLASH,
+    ASTERISK, SLASH,
 
     AND, OR, NOT,
 
-    LT, GT, EQ,
-
-    NUMBER,
-    IDENT,
-    STRING,
+    LT, GT, STRING;
 
     static public boolean isSymbol (char c) {
         String symbols = "{}()[].,;+-*/&|<>=~";
